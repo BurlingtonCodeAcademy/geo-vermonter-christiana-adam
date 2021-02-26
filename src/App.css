@@ -1,38 +1,65 @@
-.App {
-  text-align: center;
+body {
+  background-color: cadetblue;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+mapContainer {
+  width: 70vw;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#main {
+  position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+#map {
+  margin-top: 10px;
+  margin-left: 5vw;
 }
 
-.App-link {
-  color: #61dafb;
+#buttons {
+  display: grid;
+}
+#start {
+  position: absolute;
+  right: 100px;
+  bottom: 200px;
+  margin-top: 5px;
+  width: 200px;
+  height: 40px;
+}
+#quit {
+  position: absolute;
+  right: 100px;
+  bottom: 150px;
+  margin-top: 5px;
+  width: 200px;
+  height: 40px;
+}
+#guess {
+  position: absolute;
+  bottom: 100px;
+  right: 100px;
+  margin-top: 5px;
+  width: 200px;
+  height: 40px;
+}
+#modal {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  z-index: 1000;
+  width: 40vw;
+  height: 40vh;
+  text-align: center;
+  float: right;
+  display: inline;
+  background-color: lightgray;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#closeModal {
+  width: 200px;
+  margin-top: 30px;
+}
+
+#countyList {
+  width: 150px;
+  margin-top: 30px;
 }
