@@ -1,13 +1,4 @@
-import { useState } from 'react'
-
 function Modal(props) {
-    const [isShowModal, setShow] = useState(false);
-
-    function toggleShow(evt) {
-        let showModal = isShowModal;
-
-        setShow(!showModal);
-    }
     return (
     <div id="modal">
         <h1>Where are you?</h1>
@@ -30,7 +21,7 @@ function Modal(props) {
 
             </select>
         </form>
-        <button id="closeModal" onClick={toggleShow}>Close</button>
+        <button id="closeModal">Close</button>
     </div>
     )}
 

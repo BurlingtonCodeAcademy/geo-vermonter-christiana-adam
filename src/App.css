@@ -1,8 +1,6 @@
 body {
   background-color: cadetblue;
-}
-mapContainer {
-  width: 70vw;
+  margin-right: 1%;
 }
 #main {
   position: relative;
@@ -10,8 +8,8 @@ mapContainer {
   flex-direction: column;
 }
 #map {
-  margin-top: 10px;
-  margin-left: 5vw;
+  margin-top: 1%;
+  margin-left: 1%;
 }
 
 #buttons {
@@ -19,7 +17,7 @@ mapContainer {
 }
 #start {
   position: absolute;
-  right: 100px;
+  right: 15%;
   bottom: 200px;
   margin-top: 5px;
   width: 200px;
@@ -27,7 +25,7 @@ mapContainer {
 }
 #quit {
   position: absolute;
-  right: 100px;
+  right: 15%;
   bottom: 150px;
   margin-top: 5px;
   width: 200px;
@@ -36,14 +34,14 @@ mapContainer {
 #guess {
   position: absolute;
   bottom: 100px;
-  right: 100px;
+  right: 15%;
   margin-top: 5px;
   width: 200px;
   height: 40px;
 }
 #modal {
   position: absolute;
-  top: 0px;
+  top: 15%;
   right: 0px;
   z-index: 1000;
   width: 40vw;
@@ -62,4 +60,73 @@ mapContainer {
 #countyList {
   width: 150px;
   margin-top: 30px;
+}
+
+#navContainer {
+  width: 100vw;
+  margin-right: 1%;
+  display: flex;
+  background-color: lightslategray;
+}
+
+#lat {
+  display: inline;
+  width: 20vw;
+  height: 5vh;
+}
+
+#lon {
+  display: inline;
+  width: 20vw;
+  height: 5vh;
+}
+
+#town {
+  display: inline;
+  width: 20vw;
+  height: 5vh;
+}
+
+#county {
+  display: inline;
+  width: 20vw;
+  height: 5vh;
+}
+
+#score {
+  display: inline;
+  width: 20vw;
+  height: 5vh;
+}
+
+#north {
+  position: absolute;
+  width: 5vw;
+  height: 4vh;
+  right: 45%;
+  bottom: 40%;
+}
+
+#east {
+  position: absolute;
+  width: 5vw;
+  height: 4vh;
+  right: 40%;
+  bottom: 30%;
+}
+
+#west {
+  position: absolute;
+  width: 5vw;
+  height: 4vh;
+  right: 50%;
+  bottom: 30%;
+}
+
+#south {
+  position: absolute;
+  width: 5vw;
+  height: 4vh;
+  right: 45%;
+  bottom: 20%;
 }
