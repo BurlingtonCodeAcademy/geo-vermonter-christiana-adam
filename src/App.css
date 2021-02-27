@@ -71,31 +71,31 @@ body {
 
 #lat {
   display: inline;
-  width: 20vw;
+  width: 24vw;
   height: 5vh;
 }
 
 #lon {
   display: inline;
-  width: 20vw;
+  width: 24vw;
   height: 5vh;
 }
 
 #town {
   display: inline;
-  width: 20vw;
+  width: 17vw;
   height: 5vh;
 }
 
 #county {
   display: inline;
-  width: 20vw;
+  width: 17vw;
   height: 5vh;
 }
 
 #score {
   display: inline;
-  width: 20vw;
+  width: 17vw;
   height: 5vh;
 }
 
@@ -103,7 +103,7 @@ body {
   position: absolute;
   width: 5vw;
   height: 4vh;
-  right: 45%;
+  right: 40%;
   bottom: 40%;
 }
 
@@ -111,7 +111,7 @@ body {
   position: absolute;
   width: 5vw;
   height: 4vh;
-  right: 40%;
+  right: 35%;
   bottom: 30%;
 }
 
@@ -119,7 +119,7 @@ body {
   position: absolute;
   width: 5vw;
   height: 4vh;
-  right: 50%;
+  right: 45%;
   bottom: 30%;
 }
 
@@ -127,6 +127,6 @@ body {
   position: absolute;
   width: 5vw;
   height: 4vh;
-  right: 45%;
+  right: 40%;
   bottom: 20%;
 }

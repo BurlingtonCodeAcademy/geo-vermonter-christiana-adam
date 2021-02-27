@@ -1,3 +1,4 @@
+
 function Modal(props) {
     return (
     <div id="modal">
