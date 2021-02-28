@@ -15,6 +15,7 @@ import Map from './components/Map'
 function App() {
 
   const [center, setCenter] = useState([43.88, -72.7317])
+  const [initStart, setInitStart] = useState([43.88, -72.7317])
   const [zoom, setZoom] = useState(8)
   const [lat, setLat] = useState("?");
   const [lon, setLon] = useState("?");
@@ -32,6 +33,12 @@ function App() {
 
 
   //initializing random center inside Vermont//
+
+
+  // start game function and setting props state on click//
+  function startGame() {
+
+
   let randLat = Math.random() * ((45.007561302382754 - 42.730315121762715) + 42.730315121762715)
   let randLon = Math.random() * (((-71.56844190848624) + (-73.39143636279358)) + -73.39143636279358)
 
@@ -45,13 +52,9 @@ function App() {
     results = leafletPip.pointInLayer([randLon, randLat], stateLayer)
   }
 
-
-
-  
-  // start game function and setting props state on click//
-  function startGame() {
-
     setCenter([randLat, randLon])
+
+    setInitStart([center[0], center[1]])
     setLat("?")
     setLon("?")
     setScore(100)
@@ -60,8 +63,7 @@ function App() {
     setQuitButtonState(false)
     setGuessButtonState(false)
     setStartButtonState(true)
-    setZoom(8)
-    console.log(center)
+    setZoom(18)
   }
 
 
@@ -69,7 +71,7 @@ function App() {
   // quit game function and setting props state on click//
   function quitGame() {
 
-    fetch(`https://nominatim.openstreetmap.org/reverse?lat=${randLat}&lon=${randLon}&format=json`)
+    fetch(`https://nominatim.openstreetmap.org/reverse?lat=${center[0]}&lon=${center[1]}&format=json`)
     .then(data => data.json())
     .then(jsonObj => {
       setCounty(jsonObj.address.county)
@@ -78,8 +80,8 @@ function App() {
     })
 
     setScore(0)
-    setLat(randLat)
-    setLon(randLon)
+    setLat(center[0])
+    setLon(center[1])
     setQuitButtonState(true)
     setGuessButtonState(true)
     setStartButtonState(false)
@@ -98,28 +100,28 @@ function App() {
   // movement buttons functions
 
   function moveNorth() {
-    setCenter([(randLat + .002), randLon])
+    setInitStart([(initStart[0] + .002), initStart[1]])
     setScore(score-1)
   }
 
 
   function moveEast() {
-    setCenter([randLat, (randLon + .002)])
+    setInitStart([initStart[0], (initStart[1] + .002)])
     setScore(score-1)
   }
 
   function moveWest() {
-    setCenter([randLat, (randLon - .002)])
+    setInitStart([initStart[0], (initStart[1] - .002)])
     setScore(score-1)
   }
 
   function moveSouth() {
-    setCenter([(randLat - .002), randLon])
+    setInitStart([(initStart[0] - .002), initStart[1]])
     setScore(score-1)
   }
 
   function moveReturn() {
-    setCenter(randLat, randLon)
+    setInitStart(center[0], center[1])
   }
 
 
