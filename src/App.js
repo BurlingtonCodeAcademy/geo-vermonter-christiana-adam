@@ -5,33 +5,30 @@ import borderData from '../src/data/border';
 import leafletPip from 'leaflet-pip'
 import L from 'leaflet'
 import './App.css';
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Modal from './components/Modal'
 import Nav from './components/Nav'
 import Map from './components/Map'
-import MoveButtons from './components/MoveButtons'
 
 // Main game function and setting props state
 
 function App() {
 
   const [center, setCenter] = useState([43.88, -72.7317])
-  const [centerStart, setCenterStart] = useState([43.88, -72.7317])
-  const [centerMove, setCenterMove] = useState([43.88, -72.7317])
   const [zoom, setZoom] = useState(8)
   const [lat, setLat] = useState("?");
   const [lon, setLon] = useState("?");
   const [town, setTown] = useState("?")
   const [county, setCounty] = useState("?");
   const [score, setScore] = useState(100);
-  const [modal, setModal] = useState(false)
+  const [modalDisplay, setModalDisplay] = useState("none")
   const [quitButtonState, setQuitButtonState] = useState(true)
   const [guessButtonState, setGuessButtonState] = useState(true)
   const [startButtonState, setStartButtonState] = useState(false)
-  const [north, setNorth] = useState(lat)
-  const [east, setEast] = useState(lon)
-  const [west, setWest] = useState(lon)
-  const [south, setSouth] = useState(lat)
+  // const [north, setNorth] = useState(lat)
+  // const [east, setEast] = useState(lon)
+  // const [west, setWest] = useState(lon)
+  // const [south, setSouth] = useState(lat)
 
 
   //initializing random center inside Vermont//
@@ -45,20 +42,16 @@ function App() {
   while (results.length === 0) {
     randLat = Math.random() * ((45.007561302382754 - 42.730315121762715) + 42.730315121762715)
     randLon = Math.random() * ((-71.56844190848624 + (-73.39143636279358)) + -73.39143636279358)
-    results = leafletPip.pointInLayer([randLon.toPrecision(5), randLat.toPrecision(5)], stateLayer)
+    results = leafletPip.pointInLayer([randLon, randLat], stateLayer)
   }
 
 
-  // Sanitizing random coords to set precision//
-  let currentLat = randLat.toPrecision(5);
-  let currentLon = randLon.toPrecision(5);
 
   
   // start game function and setting props state on click//
   function startGame() {
 
     setCenter([randLat, randLon])
-    setCenterMove(randLat, randLon)
     setLat("?")
     setLon("?")
     setScore(100)
@@ -67,11 +60,8 @@ function App() {
     setQuitButtonState(false)
     setGuessButtonState(false)
     setStartButtonState(true)
-    setZoom(18)
-    setModal(true)
-    
-  
-
+    setZoom(8)
+    console.log(center)
   }
 
 
@@ -79,11 +69,17 @@ function App() {
   // quit game function and setting props state on click//
   function quitGame() {
 
+    fetch(`https://nominatim.openstreetmap.org/reverse?lat=${randLat}&lon=${randLon}&format=json`)
+    .then(data => data.json())
+    .then(jsonObj => {
+      setCounty(jsonObj.address.county)
+      setTown(jsonObj.address.town || jsonObj.address.city || jsonObj.address.locality
+        || jsonObj.address.village || jsonObj.address.hamlet)
+    })
+
     setScore(0)
-    setLat(currentLat)
-    setLon(currentLon)
-    setTown(town)
-    setCounty(county)
+    setLat(randLat)
+    setLon(randLon)
     setQuitButtonState(true)
     setGuessButtonState(true)
     setStartButtonState(false)
@@ -95,32 +91,35 @@ function App() {
 
   //guess game function, setting props state on click, modal pop up, county guess//
   function guessGame() {
+    setModalDisplay("block")
   }
 
 
   // movement buttons functions
 
   function moveNorth() {
-
-    
-    setCenterMove(lat + .002, lon)
+    setCenter([(randLat + .002), randLon])
     setScore(score-1)
   }
 
 
   function moveEast() {
-    setCenterMove(lat, lon + .002)
+    setCenter([randLat, (randLon + .002)])
     setScore(score-1)
   }
 
   function moveWest() {
-    setCenterMove(lat, lon - .002)
+    setCenter([randLat, (randLon - .002)])
     setScore(score-1)
   }
 
   function moveSouth() {
-    setCenterMove(lat - .002, lon)
+    setCenter([(randLat - .002), randLon])
     setScore(score-1)
+  }
+
+  function moveReturn() {
+    setCenter(randLat, randLon)
   }
 
 
@@ -131,12 +130,13 @@ function App() {
       <div id="map">
       <Nav lat={lat} lon={lon} town={town} county={county} score={score}/>
       <Map center={center} zoom={zoom}/>
-      <Modal display={modal}/>
+      <Modal display={modalDisplay}/>
       <div>
+        <button id="return" onClick={moveReturn}>Return</button>
       <button id="north" onClick={moveNorth}>North</button>
-      <button id="east" onClick={moveEast}>North</button>
-      <button id="west" onClick={moveWest}>North</button>
-      <button id="south" onClick={moveSouth}>North</button>
+      <button id="east" onClick={moveEast}>East</button>
+      <button id="west" onClick={moveWest}>West</button>
+      <button id="south" onClick={moveSouth}>South</button>
       </div>
       </div>
       <div id="buttons">

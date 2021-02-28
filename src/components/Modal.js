@@ -4,7 +4,7 @@ function Modal(props) {
     <div id="modal">
         <h1>Where are you?</h1>
         <form>
-            <select id="countyList" name="counties" value="guessCounty">
+            <select id="countyList" name="counties" value="guessCounty" onChange="handleChange">
                   <option value="Addison County">Addison County</option>
                   <option value="Bennington County">Bennington County</option>
                   <option value="Caledonia County">Caledonia County</option>
