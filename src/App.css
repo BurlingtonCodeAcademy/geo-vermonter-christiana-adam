@@ -2,15 +2,23 @@ body {
   background-color: cadetblue;
   margin-right: 1%;
 }
+
+/* Main container holds all components*/
+
 #main {
   position: relative;
   display: flex;
   flex-direction: column;
 }
+
+/* Map container holds Map component*/
+
 #map {
   margin-top: 1%;
   margin-left: 1%;
 }
+
+/* Start, Quit, and Guess Buttons */
 
 #buttons {
   display: grid;
@@ -39,6 +47,10 @@ body {
   width: 200px;
   height: 40px;
 }
+
+
+/* Modal for guessing County */
+
 #modal {
   position: absolute;
   top: 15%;
@@ -52,15 +64,21 @@ body {
   background-color: lightgray;
 }
 
+/* Close Modal Button */
+
 #closeModal {
   width: 200px;
   margin-top: 30px;
 }
 
+/* Drop down list of counties in Modal */
+
 #countyList {
   width: 150px;
   margin-top: 30px;
 }
+
+/* Nav container holds info on top, lat, lon, town, county, score */
 
 #navContainer {
   width: 100vw;
@@ -98,6 +116,8 @@ body {
   width: 17vw;
   height: 5vh;
 }
+
+/* Movement buttons styling, north, south, east, west, return */
 
 #north {
   position: absolute;

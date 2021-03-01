@@ -1,6 +1,6 @@
+// functional component Nav for info on top bar
+
 import React from 'react'
-
-
 function Nav(props) {
     
 

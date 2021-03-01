@@ -1,22 +1,25 @@
+// Importing dependencies from react leaflet//
+
 import { MapContainer, TileLayer, Polygon, Marker, Polyline } from "react-leaflet";
 import borderData from "../data/border";
 import React from 'react'
 import ChangeView from '../components/ChangeView'
+
+//functional component Map of Vermont taking props//
 
 function Map(props) {
   let vtOutline = borderData.geometry.coordinates[0].map(coords => [coords[1], coords[0]])
 
 
   return (
-    <MapContainer
+    <MapContainer //props allow us to manipulate teh map properties for click events//
       center={props.center}
       zoom={props.zoom}
-      scrollWheelZoom={false}
+      scrollWheelZoom={false} // disabling user interaction with map//
       doubleClickZoom={false}
       zoomControl={false}
       touchZoom={false}
       keyboard={false}
-      // boxZoom={false}
       dragging={false}
 
 

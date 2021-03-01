@@ -1,3 +1,5 @@
+//This functional component allows to update the map component through leaflet//
+
 
 import { useMap } from 'react-leaflet'
 

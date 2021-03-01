@@ -1,7 +1,16 @@
+// functional component Modal pops up when user clicks make a guess button//
+//currently not behaving properly with it's props of visibility//
 
 function Modal(props) {
+
+    // Close Modal function hides modal
+    function closeModal() {
+        props.setModalDisplay("hidden");
+    }
+
+// modal drop down of Vermont Counties
     return (
-    <div id="modal">
+    <div style={{ visibility: "visible" }} id="modal">
         <h1>Where are you?</h1>
         <form>
             <select id="countyList" name="counties" value="guessCounty" onChange="handleChange">
@@ -22,7 +31,7 @@ function Modal(props) {
 
             </select>
         </form>
-        <button id="closeModal">Close</button>
+        <button id="closeModal" onClick={closeModal}>Close</button>
     </div>
     )}
 

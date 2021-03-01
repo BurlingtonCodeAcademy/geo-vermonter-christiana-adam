@@ -10,7 +10,7 @@ import Modal from './components/Modal'
 import Nav from './components/Nav'
 import Map from './components/Map'
 
-// Main game function and setting props state
+// Main game function and setting props initial state
 
 function App() {
 
@@ -26,19 +26,21 @@ function App() {
   const [quitButtonState, setQuitButtonState] = useState(true)
   const [guessButtonState, setGuessButtonState] = useState(true)
   const [startButtonState, setStartButtonState] = useState(false)
+
+  //Saving this note for future use of MovementButtons components, instead//
+  //of coding them in below//
   // const [north, setNorth] = useState(lat)
   // const [east, setEast] = useState(lon)
   // const [west, setWest] = useState(lon)
   // const [south, setSouth] = useState(lat)
 
 
-  //initializing random center inside Vermont//
-
-
-  // start game function and setting props state on click//
+  // start game function on click picks a random spot in Vermont//
+  //and setting nav, map and button properties//
   function startGame() {
 
 
+    //initializing random center inside Vermont//
   let randLat = Math.random() * ((45.007561302382754 - 42.730315121762715) + 42.730315121762715)
   let randLon = Math.random() * (((-71.56844190848624) + (-73.39143636279358)) + -73.39143636279358)
 
@@ -68,7 +70,9 @@ function App() {
 
 
   
-  // quit game function and setting props state on click//
+  // quit game function on click stops the game and shows nav info//
+  //and sets score to '0', resetting buttons state on click//
+
   function quitGame() {
 
     fetch(`https://nominatim.openstreetmap.org/reverse?lat=${center[0]}&lon=${center[1]}&format=json`)
@@ -91,32 +95,34 @@ function App() {
   }
 
 
-  //guess game function, setting props state on click, modal pop up, county guess//
+  //guess game function on click displays modal box and allows user to//
+  //guess which county in Vermont they are in //
   function guessGame() {
-    setModalDisplay("block")
+    setModalDisplay("visible")
   }
 
 
-  // movement buttons functions
+  // movement buttons functions, on click moves initial starting spot accordingly//
+  //and subtracts 1 from score for every movement, except the moveReturn button //
 
   function moveNorth() {
-    setInitStart([(initStart[0] + .002), initStart[1]])
+    setInitStart([initStart[0], initStart[1] + .002])
     setScore(score-1)
   }
 
 
   function moveEast() {
-    setInitStart([initStart[0], (initStart[1] + .002)])
+    setInitStart([initStart[0] + .002, initStart[1] ])
     setScore(score-1)
   }
 
   function moveWest() {
-    setInitStart([initStart[0], (initStart[1] - .002)])
+    setInitStart([initStart[0] - .002, initStart[1]])
     setScore(score-1)
   }
 
   function moveSouth() {
-    setInitStart([(initStart[0] - .002), initStart[1]])
+    setInitStart([initStart[0], initStart[1] - .002])
     setScore(score-1)
   }
 
@@ -125,7 +131,7 @@ function App() {
   }
 
 
-  //display visual components and buttons//
+  // rendering of all game functions and components //
 
   return (
     <div id="main">
