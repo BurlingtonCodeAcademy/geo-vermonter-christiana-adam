@@ -1,3 +1,5 @@
+//Vermont border data//
+
 const borderData = {
   "type": "Feature",
   "properties": {

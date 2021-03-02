@@ -1,38 +1,160 @@
-.App {
-  text-align: center;
+body {
+  background-color: cadetblue;
+  margin-right: 1%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+/* Main container holds all components*/
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#main {
+  position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+/* Map container holds Map component*/
+
+#map {
+  margin-top: 1%;
+  margin-left: 1%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Start, Quit, and Guess Buttons */
+
+#buttons {
+  display: grid;
+}
+#start {
+  position: absolute;
+  right: 15%;
+  bottom: 200px;
+  margin-top: 5px;
+  width: 200px;
+  height: 40px;
+}
+#quit {
+  position: absolute;
+  right: 15%;
+  bottom: 150px;
+  margin-top: 5px;
+  width: 200px;
+  height: 40px;
+}
+#guess {
+  position: absolute;
+  bottom: 100px;
+  right: 15%;
+  margin-top: 5px;
+  width: 200px;
+  height: 40px;
+}
+
+
+/* Modal for guessing County */
+
+#modal {
+  position: absolute;
+  top: 15%;
+  right: 0px;
+  z-index: 1000;
+  width: 40vw;
+  height: 40vh;
+  text-align: center;
+  float: right;
+  display: inline;
+  background-color: lightgray;
+}
+
+/* Close Modal Button */
+
+#closeModal {
+  width: 200px;
+  margin-top: 30px;
+}
+
+/* Drop down list of counties in Modal */
+
+#countyList {
+  width: 150px;
+  margin-top: 30px;
+}
+
+/* Nav container holds info on top, lat, lon, town, county, score */
+
+#navContainer {
+  width: 100vw;
+  margin-right: 1%;
+  display: flex;
+  background-color: lightslategray;
+}
+
+#lat {
+  display: inline;
+  width: 24vw;
+  height: 5vh;
+}
+
+#lon {
+  display: inline;
+  width: 24vw;
+  height: 5vh;
+}
+
+#town {
+  display: inline;
+  width: 17vw;
+  height: 5vh;
+}
+
+#county {
+  display: inline;
+  width: 17vw;
+  height: 5vh;
+}
+
+#score {
+  display: inline;
+  width: 17vw;
+  height: 5vh;
+}
+
+/* Movement buttons styling, north, south, east, west, return */
+
+#north {
+  position: absolute;
+  width: 5vw;
+  height: 4vh;
+  right: 40%;
+  bottom: 40%;
+}
+
+#east {
+  position: absolute;
+  width: 5vw;
+  height: 4vh;
+  right: 35%;
+  bottom: 30%;
+}
+
+#west {
+  position: absolute;
+  width: 5vw;
+  height: 4vh;
+  right: 45%;
+  bottom: 30%;
+}
+
+#south {
+  position: absolute;
+  width: 5vw;
+  height: 4vh;
+  right: 40%;
+  bottom: 20%;
+}
+
+#return {
+  position: absolute;
+  width: 5vw;
+  height: 4vh;
+  right: 47%;
+  bottom: 40%;
 }
